@@ -1,0 +1,17 @@
+Inter process communication
+
+Inter thread communication 
+
+Daemon thread
+
+Blocked state of thread
+
+Monitor of a thread
+
+Race condition
+
+In what situation the inter thread communication is needed to be implemented
+
+Real life example of using threads in a program
+
+

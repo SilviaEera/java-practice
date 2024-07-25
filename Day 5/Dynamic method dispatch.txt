@@ -1,0 +1,19 @@
+A supar class referance can hold an object of a sub-class. 
+
+It can only call the methods that are defined inside the supar clas. 
+
+If a method of supar class is overrided inside the sub-class then the overrided method will be called, as methods are called depending on the object not referance.
+
+Dynamic Method Dispatch ====> A supar class referance holding an object of a sub-class and calling the overrided method inside the sub-class.
+                        ====> It's known as runtime polymorphism. 
+
+Dispatch here means calling a method. 
+
+Dynamically calling a method.
+
+Object will be created dynamically in *Heap* memory at runtime of the program. Before that we can not decide which object will be created. Thus the name dynamic method dispatch and reason it is called runtime polymorphism.
+
+new means it ( the object ) is dynamically created inside the heap memory at runtime.
+
+
+

@@ -1,0 +1,9 @@
+final ====> Using a final keyword before a class means that class can not be inherited by any other class.
+      ====> Using final keyword before a methods means that method can not be overrided.
+
+static ====> If a variable or member of a class is static it can be accessed by a static method of the class.
+       ====> If a member of a class is non static it can be accessed by static and non static methods.
+       ====> Static methods can only access static members of a class or other static methods.
+       ====> Non static methods can access both static members and non static members.
+
+       ====> A inner class can be declared static bu outer class can not be static.

@@ -1,0 +1,10 @@
+Abstract class ====> If a class is abstract then it can not be final, because abstract classes are meant to be extended.
+               ====> An abstract class have both abstract and non abstract methods. 
+               ====> We can only create a reference of a abstract class but can not create its object.
+               ====> Classes are extended.
+               ====> Only one class can be extended.
+               ====> Can have a referance of an abstract class and object of another class, know as dynamic method dispatch.
+
+Abstract Method ====> If a method is declared abstract then it can not have a body.
+                ====> Abstract methods has to be overrided.
+

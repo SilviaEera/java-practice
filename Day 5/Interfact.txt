@@ -1,0 +1,8 @@
+Interface ====> Interfaces are like abstract classes but with all abstract methods. 
+          ====> Interfaces are implemented. 
+          ====> Multiplae interfaces can be implemented.
+          ====> Purpose of interface is to achive polymorphism.
+          ====> Interface can only have a referance but no object can be created. 
+          ====> Can have a referace of an interface and object of another class, known as dyanamic methoda dispatch.
+
+          

@@ -1,0 +1,6 @@
+Singleton class ====> A singleton class is a process in which the class created can only create only one object.
+
+Private Constractor ====>  If a constractor is private then its object can not be created. 
+
+Identifiers ====> Variables or data members of an interface is called an identifier. 
+            ====> Identifiers are constant, final and static by nature. 

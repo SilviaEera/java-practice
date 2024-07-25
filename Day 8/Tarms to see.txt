@@ -1,0 +1,62 @@
+java object class
+
+wrapper class
+
+Number class
+
+string vs string builder vs string buffer
+
+string is immutable. can not change a string after  creation, changing it will result to a new string objece.
+
+string buffer is mutable. can add string or characters to any index of a string buffer class object. 
+the string length inside a string buffer can be less than or equal to the capacity of the string buffer.
+
+
+String buffer is thread safe. as it is thread safe its slower.
+
+string buffer methods are synchronized so no two threads can access the methods of string buffer at the same time.
+
+
+threads can hold and use the referance of a string buffer object but they are not allowed inside a method.
+
+by default the capacity of string buffer is 16
+
+
+//////////////////////////////////////////////////
+
+
+Stirng builder is the same as String buffer but it is not thread safe. As it is not thread safe, its a bit faster than string buffer.
+
+As it is not thread safe, more than one thread can enter the string builder and use the methods.
+
+this can cause data loss. 
+
+
+
+
+//////////////////////////////////////////////////
+
+so when we need mutable string and only one thread will be using it we can go for string builder.
+
+when multiple threads needs to access the string we can use the string buffer class for its thread safty. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

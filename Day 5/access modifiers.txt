@@ -1,0 +1,4 @@
+Private ====> only accessed inside the same class. Can not be accessed from anywhere else.
+Default ====> Only accessed inside the same package. Can be accessed from same package sub-class and non-sub-class. 
+Protected ====> Accessible from same packege sub-class and non-sub-class & different package sub-class. But not accessible from different package non-sub-class.
+Public ====> Can be accessed from anywhere, same package, different package, sub-class and non-sub-class.

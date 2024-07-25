@@ -1,0 +1,17 @@
+Syncronization: co-ordination between two things is called Syncronization
+
+Resource sharing: whr more than one thread access or use the same resource is called resource sharing.
+
+Critical section: the part of code of a thread that access the shared resource and can cause problem is called critical section.
+
+Two threads cannot access the same resource at the same time. They must access the resource one after another. 
+
+Mutual Exclution: preventing two thrads to access the same resource at the same time. Happening of one, prevention of happening of other when a task is already doing it.  
+
+
+
+In multithrading it can not be said which thread will run first.
+
+
+
+
