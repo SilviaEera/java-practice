@@ -1,0 +1,33 @@
+used for defining anonymous functions/methods.
+
+if an interface has a single abstract method then its called a funtional interface. 
+
+they use the annotation @FunctionalInterface
+
+java program interact with recources by transfering data.
+
+stream is a flow of data.
+
+buffer is a memory object or a temporary spot where chunk of data is stored when being transferd from one place from another. 
+
+data is stored in buffer then passed to another device / object slowly.
+
+buffer transfers small amount of data at a time.
+
+
+
+
+when data is transferd, it is sent as bytes by bytes. whole data is not sent altogather .
+
+
+
+java input/output strams ===============> 
+                                        
+                                        1. Byte stream
+                                            -> Input stream 
+                                            -> Output stream
+                                            
+                                             
+                                        2. Character stream
+                                            -> Reader class
+                                            -> Writer class 

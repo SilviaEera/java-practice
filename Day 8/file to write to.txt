@@ -1,0 +1,1 @@
+this is a test file written for a java program to copy from this file and to write it on another file. in capital, but make it lower :).

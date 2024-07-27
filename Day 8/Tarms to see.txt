@@ -45,13 +45,17 @@ when multiple threads needs to access the string we can use the string buffer cl
 
 
 
+/////////////////////////////////////////////////////////
+
+
+enum ======> enumarated data type / user defined finals.
 
 
 
 
+FileInput and FileReader has all the same methods. The difference is that FileInput reads a byte and FileReader reades a character.
 
-
-
+FileOutput and FileWriter is also the same. 
 
 
 
