@@ -164,7 +164,7 @@ class ManagementSystem {
     }
 }
 
-class EmployeeManagement implements Serializable {
+class EmployeeManagement {
     public static void main(String[] args) throws Exception {
 
         ManagementSystem managementSystem = new ManagementSystem();
