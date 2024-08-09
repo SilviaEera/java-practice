@@ -1,0 +1,10 @@
+Legacy Class :  Legacy Class was developed by java before introducing java collection framework.
+
+                Enumerator was used in Legacy class just like how Iterator is used in collection framework.
+
+                All legacy classes were synchronized. Where the classes of collection framework are not synchronized.
+
+                So multi-threading was not allowed in legacy classes.
+
+                Legacy class is now not in use but we still use Vector and Stack class sometimes. 
+

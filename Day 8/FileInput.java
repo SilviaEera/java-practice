@@ -9,10 +9,11 @@ public class FileInput {
     public static void main(String[] args) throws Exception {
         try (
                 FileInputStream inp = new FileInputStream("test.txt")) {
-            // byte newByteArr[] = new byte[inp.available()];
+            byte newByteArr[] = new byte[inp.available()];
 
-            // inp.read(newByteArr);
-
+            inp.read(newByteArr);
+            String s = new String(newByteArr);
+            System.out.println(s);
             int x;
 
             // do {
@@ -20,12 +21,12 @@ public class FileInput {
             // System.out.print((char) x);
             // } while (x != -1);
 
-            while (inp.available() != 0) {
-                x = inp.read();
-                System.out.print((char) x);
-            }
+            // while (inp.available() != 0) {
+            // x = inp.read();
+            // System.out.print((char) x);
+            // }
 
-            // String readFromFile= new String(newByteArr);
+            // String readFromFile = new String(newByteArr);
 
             // System.out.println(readFromFile);
 
