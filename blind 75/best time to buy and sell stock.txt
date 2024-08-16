@@ -1,0 +1,72 @@
+
+
+
+
+time complexity : O(n) 
+
+
+if we have one price in array we can not determine the profit; so profit will be 0;
+
+else we take the first price as minimum and then find out the minimum price from the array;
+
+after that if there are more stock prices we check to see which one has the most expansive selling price and calculate the profit by subtracting the buying price from the selling price 
+
+
+class Solution {
+    public int maxProfit(int[] prices) {
+        int minPrice = prices[0];
+
+        int initialProfit = 0;
+
+        if(prices.length <=1){
+            initialProfit = 0;
+        }
+
+        for(int i=0; i<prices.length; i++){
+            if(prices[i]<minPrice){
+                minPrice = prices[i];
+            }
+             else{
+                if(prices[i]-minPrice > initialProfit){
+                    initialProfit = prices[i]-minPrice;
+                }
+             }
+        }
+
+        return initialProfit;
+    }
+}
+
+
+
+
+
+
+
+inefficient solution is to use two for loops and using one and buying one as sselling price and calculating the profit to check which profit stans as max profit.
+
+it's time complexity: O(n^2)
+
+
+
+class Solution {
+    public int maxProfit(int[] prices) {
+        
+        int initialPrice = 0;
+
+        if(prices.length <= 1){
+            initialPrice = 0;
+        }
+
+        for(int i=0; i<prices.length-1;i++){
+            for(int j=i+1; j<prices.length; j++){
+                if(prices[j] - prices[i] > initialPrice){
+                    initialPrice = prices[j]-prices[i];
+                }
+            }
+            
+        }
+    return initialPrice;
+        
+    }
+}

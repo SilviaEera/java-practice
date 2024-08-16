@@ -1,0 +1,67 @@
+
+Efficient method using hashmap(key value pairs)
+
+time complexity is O(n) because it's using just one loop
+
+we put each number in an hash map as keys and their index as values
+
+we calculate the difference between the target value and the current number in array and check if the difference exist in the hashmap as key
+if exists we get the index of the number and also the current index when we're performing the check operation. 
+
+
+inefficient method uses two loops and check if the sum of two number is equal to the target value;
+
+this consumes a lot of time as the program goes over and sums every number with other numbers in every possible combination.
+
+time complexity of this method will me O(n^2)
+
+
+3, 2, 4
+
+target = 6
+
+HashMap hm = {}
+
+for i=0
+
+diff = 6-3 => 3
+
+if hm contains a key 3:
+	
+	return hm.get(3)  // returns the value of the pair that has the 3 as key;
+
+else:
+	hm.put(nums[i], i);   // initial hashmap was empty; it did not contain any key 3;
+			      // we put 3 as a key, and 0 as value
+
+new hashmap => {(3:0)}
+
+for i=1
+
+diff = 6-2 => 4
+
+if hm contains a key 4:
+
+	return hm.get(4)  //return the value of the pair that has 4 as a key
+else:
+	hm.put(nums[i], i); //hashmap did not have any pair with key 4;
+			   //we put 2 as key and 1 as value
+
+new hashmap => {(3:0), (2:1)}
+
+for i=4
+
+diff = 6-4 > 2
+
+if hm contains a key 2:
+
+return hm.get(2), i returns the value of the pair that has 2 as a key
+
+	returns : [1, 2]; 
+
+cause our hashmap already had a pair that had 2 as a key
+
+so we returned the value of that/or its index
+and the second index which gives us the target value if we sum up the keys of those values.
+
+	
