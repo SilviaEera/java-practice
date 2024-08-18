@@ -25,15 +25,15 @@ public class JDBCconnection {
             //create statement
             statement = connection.createStatement();
             String query = "select * from testtable";
-            String updateQuery = String.format("update testtable set age='%o' where name = '%s'", 19, "noman");
-//            String insertQuery = String.format("INSERT INTO testtable(name, age) VALUES('%s', %o)", "noman",19);
-            int rowsUpdated = statement.executeUpdate(updateQuery);
+//            String updateQuery = String.format("delete from testtable where name='%s'","test");
+//            String insertQuery = String.format("INSERT INTO testtable(name, age) VALUES('%s', %f)", "testtttt ",10.0);
+//            int rowsUpdated = statement.executeUpdate(updateQuery);
 
-            if(rowsUpdated>0){
-                System.out.println(rowsUpdated + " rows updated");
-            } else {
-                System.out.println("no rows updated.");
-            }
+//            if(rowsUpdated>0){
+//                System.out.println(rowsUpdated + " rows updated");
+//            } else {
+//                System.out.println("no rows updated.");
+//            }
 
 //            int rowsAffected = statement.executeUpdate(insertQuery);
             result = statement.executeQuery(query);
