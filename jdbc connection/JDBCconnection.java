@@ -25,8 +25,26 @@ public class JDBCconnection {
             //create statement
             statement = connection.createStatement();
             String query = "select * from testtable";
+            String updateQuery = String.format("update testtable set age='%o' where name = '%s'", 19, "noman");
+//            String insertQuery = String.format("INSERT INTO testtable(name, age) VALUES('%s', %o)", "noman",19);
+            int rowsUpdated = statement.executeUpdate(updateQuery);
 
+            if(rowsUpdated>0){
+                System.out.println(rowsUpdated + " rows updated");
+            } else {
+                System.out.println("no rows updated.");
+            }
+
+//            int rowsAffected = statement.executeUpdate(insertQuery);
             result = statement.executeQuery(query);
+
+//
+
+//            if(rowsAffected>0){
+//                System.out.println("data insertion successful.");
+//            } else{
+//                System.out.println("data not inserted.");
+//            }
             while(result.next()){
                 int id = result.getInt(1);
                 String name = result.getString(2);
@@ -43,6 +61,8 @@ public class JDBCconnection {
             System.out.println(e);
         }catch(SQLException e){
             System.out.println(e);
+        } catch(Exception e){
+
         }
 
     }
