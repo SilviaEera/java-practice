@@ -12,16 +12,16 @@ public class StatementAddBatch {
             Statement statement = c.createStatement();
             Scanner sc = new Scanner(System.in);
             while(true){
-                System.out.print("Enter the name: ");
+                System.out.print("Enter the food item: ");
                 String name = sc.next();
-                System.out.print("Enter the age: ");
+                System.out.print("Enter the price: ");
                 int price = sc.nextInt();
 
                 System.out.println("Enter more data? (Y/N)");
 
                 String choice = sc.next();
-                String query = String.format("INSERT INTO foodprice(foodname, foodprice) VALUES('%s', %d)", name, price);
 
+                String query = String.format("INSERT INTO food(name, price) VALUES('%s', %d)", name, price);
                 statement.addBatch(query);
 
                 if(choice.toUpperCase().equals("N")){
@@ -29,7 +29,8 @@ public class StatementAddBatch {
                 }
             }
 
-            int rowsAffected[] = statement.executeBatch();
+            int[] rowsAffected = statement.executeBatch();
+
 
         }catch (Exception e){
 
