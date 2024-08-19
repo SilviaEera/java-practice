@@ -5,22 +5,24 @@ import java.util.Scanner;
 
 public class PrepareStatementAddBatch {
     public static void main(String[] args) {
+        Connection c = null;
+        PreparedStatement preparedStatement = null;
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
 
-            Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/university", "root", "admin");
+            c = DriverManager.getConnection("jdbc:mysql://localhost:3306/university", "root", "admin");
 
             String q = "insert into st(sname, dept, cgpa) values(?, ?, ?)";
-            PreparedStatement preparedStatement = c.prepareStatement(q);
+            preparedStatement = c.prepareStatement(q);
 
             Scanner sc = new Scanner(System.in);
 
             while(true){
                 System.out.println("enter the name: ");
-                String name = sc.next();
+                String name = sc.nextLine();
 
                 System.out.println("enter the department neme: ");
-                String dept = sc.next();
+                String dept = sc.nextLine();
 
                 System.out.println("enter the cgpa: ");
                 Double cgpa = sc.nextDouble();
@@ -41,8 +43,13 @@ public class PrepareStatementAddBatch {
 
             int[] rowAffected = preparedStatement.executeBatch();
 
-
+            
+            preparedStatement.close();
+            c.close();
 //
-        } catch (Exception e){}
+        } catch (Exception e){
+
+        }
+
     }
 }
