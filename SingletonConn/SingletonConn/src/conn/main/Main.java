@@ -20,8 +20,10 @@ public class Main {
 		
 		
 		while(resultSet.next()) {
-			System.out.println(resultSet.getString("sname"));
+			System.out.println(resultSet.getString("sname") + "\t" + resultSet.getDouble("cgpa"));
 		}
+		
+		DatabaseConnection.closeConnection();
 		
 	}
 	
