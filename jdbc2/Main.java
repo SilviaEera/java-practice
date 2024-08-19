@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -26,14 +27,16 @@ public class Main {
             if(resultSet!=null){
                 System.out.println("Name" + "\t" + "Department" + "\t" + "CGPA");
                 while(resultSet.next()){
-                    String name = resultSet.getString("sname");
+                    String sname = resultSet.getString("sname");
                     String dept = resultSet.getString("dept");
                     Double cgpa = resultSet.getDouble("cgpa");
 
-                    System.out.println(name + "\t" + dept + "\t" + cgpa);
+                    System.out.println(sname + "\t" + dept + "\t" + cgpa);
                 }
             }
 
+        }catch (IOException e){
+            e.printStackTrace();
         } catch (SQLException e){
             e.printStackTrace();
         } catch (java.lang.Exception e){

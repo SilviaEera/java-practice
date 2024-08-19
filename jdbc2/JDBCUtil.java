@@ -1,4 +1,7 @@
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.sql.*;
+import java.util.Properties;
 
 public class JDBCUtil {
 
@@ -16,11 +19,16 @@ public class JDBCUtil {
 
 //    to establish a connection
     public static Connection getConnection() throws  Exception{
-        String url = "jdbc:mysql:///university";
-        String user = "root";
-        String pass = "admin";
 
-        Connection c = DriverManager.getConnection(url, user, pass);
+        FileInputStream fis = new FileInputStream("C:\\Users\\Eera\\Desktop\\java\\jdbc2\\applicationPropertie.properties");
+        Properties properties = new Properties();
+        properties.load(fis);
+
+//        String url = "jdbc:mysql:///university";
+//        String user = "root";
+//        String pass = "admin";
+
+        Connection c = DriverManager.getConnection(properties.getProperty("url"), properties.getProperty("user"), properties.getProperty("pass"));
         return  c;
 
     }
@@ -38,7 +46,7 @@ public class JDBCUtil {
             if(resultSet!=null){
                 resultSet.close();
             }
-        }catch (SQLException e){
+        } catch (SQLException e){
             e.printStackTrace();
         }
     }
