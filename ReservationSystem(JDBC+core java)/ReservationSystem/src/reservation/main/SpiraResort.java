@@ -37,12 +37,14 @@ public class SpiraResort {
 
 		String deleteQuery = "DELETE FROM spirareservation where reservation_id=(?)";
 		
-		String selectAllQuery = "SELECT * FROM spirareservation";
+		
 		
 		String selectSingleQuery = "SELECT * FROM spirareservation where reservation_id=(?)";
 		
 		while(true) {
 			System.out.println("Welcome to Spira Island");
+			System.out.println(".......................");
+			System.out.println("");
 			System.out.println("1. Register a new guest.");
 			System.out.println("2. Update info of a guest.");
 			System.out.println("3. Remove a guest.");
@@ -55,9 +57,21 @@ public class SpiraResort {
 			
 			switch(choice) {
 			case 1:
+				
 				SpiraManagment.addGuest(c, sc);
 				break;
+			
+			case 2:
+				System.out.println("1. Update name of a guest.");
+				System.out.println("2. Update room number of a guest.");
+				System.out.println("3. Update contact number of a guest.");
+				
+				int num = sc.nextInt();
+				
+				if(num==1) {
+					SpiraManagment.showAllGuests(c);
 			}
+				break;
 		}
 		
 //		if(c!=null) {
@@ -84,4 +98,5 @@ public class SpiraResort {
 //		Common.getCommonClass().CloseConnection();
 	}
 
+}
 }
