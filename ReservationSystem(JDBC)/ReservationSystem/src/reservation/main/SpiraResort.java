@@ -28,11 +28,11 @@ public class SpiraResort {
 		
 		c= Common.getCommonClass().getConnection();
 		
-		String updateQueryName = "UPDATE spirareservation SET guest_name = (?) where reservation_id=(?)";
 		
-		String updateQueryRoom = "UPDATE spirareservation SET room_number = (?) where reservation_id=(?)";
 		
-		String updateQueryContact = "UPDATE spirareservation SET contact_number = (?) where reservation_id=(?)";
+		
+		
+		
 		
 
 		String deleteQuery = "DELETE FROM spirareservation where reservation_id=(?)";
@@ -65,12 +65,28 @@ public class SpiraResort {
 				System.out.println("1. Update name of a guest.");
 				System.out.println("2. Update room number of a guest.");
 				System.out.println("3. Update contact number of a guest.");
+				System.out.println("4. Update all info of a guest.");
 				
 				int num = sc.nextInt();
 				
 				if(num==1) {
 					SpiraManagment.showAllGuests(c);
-			}
+					System.out.println();
+					SpiraManagment.updateName(c, sc);
+				}
+				
+				if(num==2) {
+					SpiraManagment.showAllGuests(c);
+					System.out.println();
+					SpiraManagment.updateRoom(c, sc);
+					
+				}
+				
+				if(num==3) {
+					SpiraManagment.showAllGuests(c);
+					System.out.println();
+					SpiraManagment.updateRoom(c, sc);
+				}
 				break;
 		}
 		

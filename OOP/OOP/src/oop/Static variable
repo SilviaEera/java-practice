@@ -1,0 +1,16 @@
+1. Uses static keyword
+
+2. Memory allocated for static variables at the time of class loading 
+
+3. Memory is allocated inside the Heap area
+
+
+4. Memory is allocated only once throughout the program
+
+5. Every object of the class uses only one copy of the static variable
+
+6. Static variable can be called using the class name.
+
+7. It is also called a Class variable 
+
+8. Can be accessed by static/non-static elements
