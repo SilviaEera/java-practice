@@ -2,6 +2,7 @@ package oop.headfirst.objectvill;
 
 public class Airplane {
 
+//	int sp;
 	private int speed;
 	private int crewMember;
 	private String planeName;
@@ -18,6 +19,10 @@ public class Airplane {
 //		this.speed = speed;
 //		this.ticketPrice = ticketPrice;
 //	}
+	
+	public void display() {
+		System.out.println("from super class Airplane");
+	}
 	
 	public int getSpeed() {
 		return speed;

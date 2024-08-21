@@ -2,14 +2,18 @@ package oop.headfirst.objectvill;
 
 public class FlyTest {
 	public static void main(String args []) {
+		
+		
 		Airplane biplane = new Airplane();
-		biplane.setSpeed(100);
+		biplane.setSpeed(212);
 		
 		System.out.println(biplane.getSpeed());
 		
 		Jet boing = new Jet();
 		
-		boing.setSpeed(biplane.getSpeed());
+//		biplane.display();
+//		boing.display();
+		boing.setSpeed(422);
 		
 		System.out.println(boing.getSpeed());
 		

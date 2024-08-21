@@ -14,5 +14,8 @@ public class Jet extends Airplane{
 	public void accelarate() {
 		super.setSpeed(getSpeed()*multiplier);
 	}
+	public void display() {
+		System.out.println("From subclass Jet");
+	}
 	
 }
