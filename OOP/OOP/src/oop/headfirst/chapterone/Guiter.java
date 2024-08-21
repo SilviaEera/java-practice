@@ -5,9 +5,10 @@ public class Guiter {
 	
 	private double price;
 	
-	public Guiter(String serialNumber, String builder, String type, String backWood, String topWood, double price) {
+	public Guiter(String serialNumber, String builder,String model, String type, String backWood, String topWood, double price) {
 		this.serialNumber = serialNumber;
 		this.builder = builder;
+		this.model = model;
 		this.type = type;
 		this.backWood = backWood;
 		this.topWood = topWood;
@@ -19,6 +20,10 @@ public class Guiter {
 	
 	public String getSerialNumber() {
 		return serialNumber;
+	}
+	
+	public String getModel() {
+		return model;
 	}
 	
 	public String getBuilder() {
