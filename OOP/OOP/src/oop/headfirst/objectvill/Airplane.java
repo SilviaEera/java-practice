@@ -8,20 +8,16 @@ public class Airplane {
 	private int ticketPrice;
 	
 	
-	{
-		speed = 200;
-		planeName = "Boing 357";
-		crewMember = 30;
-	}
+	
 	
 	public Airplane() {
 		
 	}
 	
-	public Airplane(int speed, int ticketPrice) {
-		this.speed = speed;
-		this.ticketPrice = ticketPrice;
-	}
+//	public Airplane(int speed, int ticketPrice) {
+//		this.speed = speed;
+//		this.ticketPrice = ticketPrice;
+//	}
 	
 	public int getSpeed() {
 		return speed;
@@ -48,21 +44,27 @@ public class Airplane {
 	}
 	
 	
-	public String toString() {
-		String r = "[ 'Plane name' : " + planeName + "' Speed' : " + speed + "km/h" + " 'Crew Member' : " + crewMember + " 'Ticket price' : " + ticketPrice + "BDT" + " ]" ;
-		return r;
-	}
+//	public String toString() {
+//		String r = "[ 'Plane name' : " + planeName + "' Speed' : " + speed + "km/h" + " 'Crew Member' : " + crewMember + " 'Ticket price' : " + ticketPrice + "BDT" + " ]" ;
+//		return r;
+//	}
 //	class jet
 
 	
 	
 	public static void main(String [] args) {
-		Airplane ar = new Airplane(300, 70000);
+		Airplane ar = new Airplane();
 		Jet j = new Jet();
+		ar.setSpeed(20);
+		ar.setTicketPrice(200);
 		
-		System.out.println("Jet   "+j);
+		System.out.println(ar.getSpeed());
+		j.setSpeed(ar.getSpeed());
+		System.out.println(j.getSpeed());
 		
-		System.out.print(ar);
+		
+		
+		
 	}
 	
 }
