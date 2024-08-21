@@ -52,20 +52,22 @@ public class Airplane {
 
 	
 	
-	public static void main(String [] args) {
-		Airplane ar = new Airplane();
-		Jet j = new Jet();
-		ar.setSpeed(20);
-		ar.setTicketPrice(200);
-		
-		System.out.println(ar.getSpeed());
-		j.setSpeed(ar.getSpeed());
-		System.out.println(j.getSpeed());
-		
-		
-		
-		
-	}
+//	public static void main(String [] args) {
+//		Airplane ar = new Airplane();
+//		Jet j = new Jet();
+//		ar.setSpeed(20);
+//		ar.setTicketPrice(200);
+//		
+//		System.out.println(ar.getSpeed());
+//		j.setSpeed(ar.getSpeed());
+//		System.out.println(j.getSpeed());
+//		j.accelarate();
+//		System.out.println(j.getSpeed());
+//		
+//		j.accelarate();
+//		
+//		System.out.println(j.getSpeed());
+//	}
 	
 }
 
