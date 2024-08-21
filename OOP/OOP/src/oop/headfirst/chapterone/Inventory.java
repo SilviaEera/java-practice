@@ -11,8 +11,8 @@ public class Inventory {
 		guiters = new LinkedList();
 	}
 	
-	public void addGuiter(String serialNumber, String builder, String model, String type, String backWood, String topWood, double price) {
-		Guiter guiter = new Guiter(serialNumber, builder, model, type, backWood, topWood, price);
+	public void addGuiter(String serialNumber, Builder fender, String model, Type electric, Wood alder, Wood alder2, double price) {
+		Guiter guiter = new Guiter(serialNumber, fender, model, electric, alder, alder2, price);
 		
 		guiters.add(guiter);
 		
@@ -29,37 +29,34 @@ public class Inventory {
 		return null;
 	}
 	
-	public Guiter search(Guiter searchGuiter) {
+	public List search(Guiter searchGuiter) {
+		List matchingGuiters = new LinkedList();
 		for(Iterator i = guiters.iterator(); i.hasNext();) {
 			Guiter guiter = (Guiter) i.next();
 			
 			
+//			String model = searchGuiter.getModel();
 			
-			String model = searchGuiter.getModel();
-			String type = searchGuiter.getType();
-			String backWood= searchGuiter.getBackWood();
-			String topWood= searchGuiter.getTopWood();
-			if((model.equals(guiter.getModel())) || (type.equals(guiter.getType())) || (backWood.equals(guiter.getBackWood())) || (topWood.equals(guiter.getTopWood()))) {
-				return guiter;
+			
+//			if(searchGuiter.getBuilder() != guiter.getBuilder()) {
+//				continue;
+//			} 
+			if(searchGuiter.getType() != guiter.getType()) {
+				continue;
 			}
-//			
-//			
-//			
-//			if((type!=null) && (type!="") && (!type.equals(guiter.getType()))){
+			
+//			if(searchGuiter.getBackWood() !=guiter.getBackWood()) {
 //				continue;
 //			}
-//			
-//			
-//			
-//			if((backWood!=null) && (backWood!="") && (!backWood.equals(guiter.getBackWood()))){
+//			 
+//			if(searchGuiter.getTopWood() != guiter.getTopWood()) {
 //				continue;
 //			}
-//			
-//			
-//			
-//			if((topWood!=null) && (topWood!="") && (!topWood.equals(guiter.getTopWood()))){
-//				continue;
+			
+			matchingGuiters.add(guiter);
+			
+			
 		}
-		return null;
+		return matchingGuiters;
 	}
 }
