@@ -14,6 +14,10 @@ public class Airplane {
 		crewMember = 30;
 	}
 	
+	public Airplane() {
+		
+	}
+	
 	public Airplane(int speed, int ticketPrice) {
 		this.speed = speed;
 		this.ticketPrice = ticketPrice;
@@ -43,16 +47,24 @@ public class Airplane {
 		this.ticketPrice = ticketPrice;
 	}
 	
+	
 	public String toString() {
 		String r = "[ 'Plane name' : " + planeName + "' Speed' : " + speed + "km/h" + " 'Crew Member' : " + crewMember + " 'Ticket price' : " + ticketPrice + "BDT" + " ]" ;
 		return r;
 	}
+//	class jet
+
 	
 	
 	public static void main(String [] args) {
 		Airplane ar = new Airplane(300, 70000);
+		Jet j = new Jet();
+		
+		System.out.println("Jet   "+j);
 		
 		System.out.print(ar);
 	}
 	
 }
+
+
