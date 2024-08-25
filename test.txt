@@ -1,0 +1,50 @@
+Super s = new Sub();
+
+super class reference and sub-class object 
+
+this is dynamic method dispatch for achieving runtime polymorphism
+
+we  can use super class reference to access the overridden methods in sub-class.
+
+ using the new keyword the object is created in heap memory dynamically. 
+
+before runtime we the program cannot decide which method to call, this is how this process achieves runtime polymorphism.
+
+==============================
+==============================
+==============================
+
+through IS-A relationship we promote data reusability . (child extends parent : child is a parent)
+
+through Has-A relationship we promote data navigation and communication. (car has a engine)
+
+
+
+In Has-A relationship there is a target object and a dependent object.
+
+Injecting the dependent object into the target object is known as data injection.
+
+data injection can be achieved through 
+					- constructor injection
+					- setter injection
+
+
+
+
+
+1  >>>>>> ONE TO ONE RELATIONSHIP
+
+in a one to one relationship one instance of an entity (class) is mapped to just one instance of another entity.
+
+example : A employee has only one salary account;
+
+
+
+2 >>>>>> ONE TO MANY RELATIONSHIP
+
+in a one to many relationship one instance of an entity is mapped to multiple instances of another entity.
+
+example : one department has multiple students. 
+
+
+
