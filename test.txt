@@ -93,3 +93,24 @@ It's not a good practice to directly implement the SRS(Service Requirement Speci
 We should implement it in a abstract class {AdapterImpl} and give it a dummy implementation / implement the methods without any body. This will prevent object creation of the class. This makes us unable to call the methods and use them.
 
 Then we create another class that extends the abstract class holding the dummy implementations of the methods.
+
+
+
+
+
+
+
+
+
+
+
+interface I
+
+
+
+
+
+
+
+
+
