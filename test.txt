@@ -44,7 +44,52 @@ example : A employee has only one salary account;
 
 in a one to many relationship one instance of an entity is mapped to multiple instances of another entity.
 
-example : one department has multiple students. 
+example : one department has multiple employees. 
+
+
+3 >>>>>> MANY TO ONE RELATIONSHIP
+
+in a many to one relationship many instances of an entity is bounded to one instance of an entity.
+
+example : many students in one batch.
+
+
+4 >>>>>> MANY TO MANY RELATIONSHIP 
+
+in a many to many relationship multiple instances of one entity is associated with / mapped to multiple instances of another entity.
+
+example : multiple students takes multiple courses 
 
 
 
+===========================================================================================
+marker interface
+
+Marker Interface does not contain any methods and by implementing that Interface our Object will get some ability such type of Interface are called "Marker Interface" / "Tag Interface" / "Ability Interface".
+
+Example: Serializable, Cloneable, SingleThreadModel
+
+ 
+Q : how marker interface gives ability to the objects without having any methods?
+
+>>>>> JVM is responsible for providing the abilities.
+
+
+
+Q : Why JVM provides abilities to the Marker Interface?
+
+>>>>> To reduce the complexity of the program. 
+
+
+Q : Is it possible to create our own marker interface?
+
+>>>> Yes, but we need to customize the JVM
+
+
+========================================================================================
+
+It's not a good practice to directly implement the SRS(Service Requirement Specification) / Methods of interfaces. Because they are 100% abstract.
+
+We should implement it in a abstract class {AdapterImpl} and give it a dummy implementation / implement the methods without any body. This will prevent object creation of the class. This makes us unable to call the methods and use them.
+
+Then we create another class that extends the abstract class holding the dummy implementations of the methods.
