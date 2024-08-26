@@ -94,11 +94,22 @@ or nums[4] = -1
 
 or nums[5] = 2 
 
-	maxEnd = max of[2, (4+2)] =>6
-	maxSoFar = max of[4, 6] => 6
+	maxEnd = max of[2, (3+2)] =>5
+	maxSoFar = max of[4, 5] => 5
+
+or nums[6] = 1 
+
+	maxEnd = max of[1, (5+1)] =>6
+	maxSoFar = max of[5, 6] => 6
+
+or nums[7] = -5 
+
+	maxEnd = max of[-5, (6-5)] =>1
+	maxSoFar = max of[6, 1] => 6
 
 
+or nums[8] = 4 
 
-
-
+	maxEnd = max of[4, (1+4)] =>5
+	maxSoFar = max of[6, 5] => 6
 ==========================================================
