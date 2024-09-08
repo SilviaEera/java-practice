@@ -1,0 +1,1286 @@
+Super s = new Sub();
+
+super class reference and sub-class object 
+
+this is dynamic method dispatch for achieving runtime polymorphism
+
+we  can use super class reference to access the overridden methods in sub-class.
+
+ using the new keyword the object is created in heap memory dynamically. 
+
+before runtime we the program cannot decide which method to call, this is how this process achieves runtime polymorphism.
+
+==============================
+==============================
+==============================
+
+through IS-A relationship we promote data reusability . (child extends parent : child is a parent)
+
+through Has-A relationship we promote data navigation and communication. (car has a engine)
+
+
+
+In Has-A relationship there is a target object and a dependent object.
+
+Injecting the dependent object into the target object is known as data injection.
+
+data injection can be achieved through 
+					- constructor injection
+					- setter injection
+
+
+
+
+
+1  >>>>>> ONE TO ONE RELATIONSHIP
+
+in a one to one relationship one instance of an entity (class) is mapped to just one instance of another entity.
+
+example : A employee has only one salary account;
+
+
+
+2 >>>>>> ONE TO MANY RELATIONSHIP
+
+in a one to many relationship one instance of an entity is mapped to multiple instances of another entity.
+
+example : one department has multiple employees. 
+
+
+3 >>>>>> MANY TO ONE RELATIONSHIP
+
+in a many to one relationship many instances of an entity is bounded to one instance of an entity.
+
+example : many students in one batch.
+
+
+4 >>>>>> MANY TO MANY RELATIONSHIP 
+
+in a many to many relationship multiple instances of one entity is associated with / mapped to multiple instances of another entity.
+
+example : multiple students takes multiple courses 
+
+
+
+===========================================================================================
+marker interface
+
+Marker Interface does not contain any methods and by implementing that Interface our Object will get some ability such type of Interface are called "Marker Interface" / "Tag Interface" / "Ability Interface".
+
+Example: Serializable, Cloneable, SingleThreadModel
+
+ 
+Q : how marker interface gives ability to the objects without having any methods?
+
+>>>>> JVM is responsible for providing the abilities.
+
+
+
+Q : Why JVM provides abilities to the Marker Interface?
+
+>>>>> To reduce the complexity of the program. 
+
+
+Q : Is it possible to create our own marker interface?
+
+>>>> Yes, but we need to customize the JVM
+
+
+========================================================================================
+
+It's not a good practice to directly implement the SRS(Service Requirement Specification) / Methods of interfaces. Because they are 100% abstract.
+
+We should implement it in a abstract class {AdapterImpl} and give it a dummy implementation / implement the methods without any body. This will prevent object creation of the class. This makes us unable to call the methods and use them.
+
+Then we create another class that extends the abstract class holding the dummy implementations of the methods.
+
+
+
+
+interface IDemo{
+
+	//SRS(Service Requirement Specification)
+	void meth1();
+	void meth2();
+	void meth3();
+}
+
+
+abstract class Adapter implements IDemo{
+	
+	//abstract class so cannot create an object of this class and call the method to use them
+	
+	public void meth1(){}
+	public void meth2(){}
+	public void meth3(){}
+
+}
+
+
+class DemoImpl extends Adapter{
+
+	//this is done so we can extend the Adapter class and use any method we need, we don't have to override  all the methods coming from interface IDemo
+
+	public void meth1(){
+		System.out.println("some text from meth1");
+	}
+
+}
+
+
+=====================================================================================================================================
+
+			Adapter class (Design pattern to solve problem of direct implementation of interface)
+
+=====================================================================================================================================
+
+
+It is a simple java class that implements an interface only with empty implementation for every method.
+
+If we implement an interface compulsorily we should give the body for all the methods whether it is required or not. This approach increases the length of the code and reduces readability.
+
+
+interface X{
+	meth1();
+	meth2();
+	meth3();
+	meth4();
+}
+
+class XImpl implements X{
+
+public void meth1(){
+		System.out.println("overrided method 1");
+	}
+	public void meth2(){}
+	public void meth3(){}
+	public void meth4(){}
+
+}
+
+
+In above approch, I only wanted to use meth1(), but I still needed to give body to all the abstract methods, which increased my code size, to reduce this we use Adapter class;
+
+Adapter class are such classes which implementes the interface and gives dummy implementation for all the absreact methods. So if we extend Adapter class then we can easily give body only for those methods which we are interested in giving body to.
+
+
+=====================================================================================================================================
+						Why use Interface 
+=====================================================================================================================================
+
+1: performance is high
+2: while implementation the interface we can also extend any class so this promotes reusability;
+
+
+=====================================================================================================================================
+					Why not use Abstract class instead of interface 
+=====================================================================================================================================
+
+1: performance is low
+2: while extending the abstract class we cannot extend any more class, so this does not promotes reusability;
+
+=====================================================================================================================================
+					Memory allocation of variables
+=====================================================================================================================================
+
+for primitive types :
+	local variable => Stack
+	instance variable => Heap
+	static variable => method area (Heap area)
+
+for Object type => Heap // We can use methods with the object types
+
+
+=====================================================================================================================================
+					Use of Wrapper class
+=====================================================================================================================================
+1. To wrap primitives into object form so that we can handle primitives also just like objects
+2. To define several utility functions which are required for the primitives.
+
+
+(We use wrapper class when we want to take primitive type data as objects.)
+
+
+
+						Object class 
+						      | toString() -> returns the hashCode value of the Object;
+						      | equals() -> compares the reference o the object;
+		              ======================= | ========================================
+				|	|	    Number     |               |            |
+			      String  StringBuilder   |     StringBuffer     Character   Boolean
+  						      |
+			          =========================================
+			             |     |       |       |     |      |       
+			           Byte  Short  Integer  Long  Float  Double  
+
+  				   toString() -> overridden to print the data present in the Object
+				   equals() -> overridden to compare the content in the object
+
+
+ Number is the parent class for all wrapper class.
+
+ These wrapper classes are present in ["java.lang"] package.
+
+ Almost all Wrapper classes have two constructors 
+	1. One for taking primitive types
+	2. One for taking String types
+
+	Example : Integer i = new Integer(12);
+		  Integer i = new Integer("12");
+
+
+=====================================================================================================================================
+						   Immutable class
+=====================================================================================================================================
+
+If we create an Object and if we try to make a change, with that change new object will be created and those changes will not reflected in the old copy.
+
+=====================================================================================================================================
+						   Question
+=====================================================================================================================================
+Can we make our  user defined class as immutable? 
+
+>>>>> 
+
+final class Test {
+
+	int i;
+	Test(int i){
+		this.i = i; //setting up the value of i;
+	}
+
+	//a method with return type of Test to modify the value of i;
+	public Test modify(int i){
+		if(this.i == i){
+			return this; //returns the current object if i value is the same
+		}else{ 
+		        return new Test(i); //returns a new Test object with the parameter i, if i is not the same as previous object
+		}
+	}
+
+}
+
+
+public static void main(String args[]){
+	Test t1 = new Test(5);
+
+	Test t2 = t1.modify(3);
+	
+	Test t3 = t1.modify(5);
+
+	System.out.println(t1==t2); // returns false
+	System.out.println(t1==t3); // returns true
+
+}
+
+
+Immutable class should not be modified or altered. If there is a chance for the user to inherit and modify the Immutable class then it will lose it's immutable behavior. So the Immutable class is made final as no one can inherit this class and modify it's properties.
+
+
+                         ****Methods that are static are helper method or utility method. ****
+ 
+=====================================================================================================================================
+						Wrapper class utility methods
+=====================================================================================================================================
+
+1. valueOf() method
+ 
+2. xxxxValue() method
+
+3. parseXXX() method
+
+4. toString() method
+
+
+ 
+					           **valueOf()**
+
+
+
+                                       -------                 --------------
+				      | String|==============>|Wrapper Object|
+                                       -------                 --------------
+
+
+public static Integer valueOf(String n, int radix/numberBase) throws NumberFormatException
+
+public static Integer valueOf(String n) throws NumberFormatException
+
+public static void valueOf(int data)
+
+
+To create a wrapper object from primitive type or String we use valueOf().
+It is alternative to constructor of Wrapper class, not suggestable to use.
+Every Wrapper class, except character class contains the valueOf() method to create a Wrapper Object.
+
+
+Example :
+
+	Integer i = new Integer(10); //primitive to object
+
+	Double d = new Double("10.5"); //String to object
+
+	Boolean b = new Boolean("silvia"); 
+
+	sysout(i);//10
+	sysout(d); //10.5
+	sysout(b); //false
+
+=====================================================================================================================================
+						**parseXXX()**
+=====================================================================================================================================
+
+				       -------                 ----------
+				      | String|==============>|Primitives|
+                                       -------                 ----------
+
+
+
+converts any String type data to primitive types.
+
+Example :
+
+	int i = Integer.parseInt("1");
+
+	sysout(i); // returns a int 1
+
+
+                     *** parseXXX(String s, int radix); // radix can be from 2 to 36 ***
+
+
+=====================================================================================================================================
+						**xxxValue()**
+=====================================================================================================================================
+
+
+				       --------------                 ----------
+				      |Wrapper Object|==============>|Primitives|
+                                       --------------                 ----------
+
+                        
+converts any Wrapper type data to primitive types.
+
+This is not applicable for character and Boolean Wrapper class
+
+Example :
+
+	;
+
+	sysout(i); // returns a int 1
+
+
+**********************************integer to byte formula**********************************
+                   
+                                   result = minrange + (total-maxrange-1)
+				   res = -127+(130-127-1) => -126 (for int value 130)
+
+=====================================================================================================================================
+					Object class to String methods
+=====================================================================================================================================
+
+                                       --------------       tostring()       ------
+				      |Wrapper Object|=====================>|String|
+                                       --------------                        ------
+
+
+Used to convert wrapper or primitive types to String.
+
+Every wrapper class contains toString() method
+
+
+   	#1 public String toString(){}
+
+	-Every wrapper class contains this method.
+	-It's an overridden version of Object class toString() method
+	-When we try to print the wrapper class object reference this method is executed
+	
+	Integer i = new Integer(10);
+	System.out.println(i); // prints the data in wrapper class object i. eg: 10
+
+
+	Example: 
+	 	String s = Integer.toString(10);  //returns a string s="10"; 
+		String s1 = Integer.toString(5, 2); // returns stirng s1 = "101"; binary of 5;
+
+=====================================================================================================================================						String Factory Methods
+=====================================================================================================================================
+
+Used to convert various primitive data types to String object.
+
+	#1 valueOf()
+		-Converts different types to their string representation
+		-Overloaded for various primitive types and objects
+
+	Example:
+
+		String s1 = String.valueOf(42);  // "42"
+		String s2 = String.valueOf(true);  // "true"
+		String s3 = String.valueOf(new char[]{'a', 'b', 'c'});  // "abc"
+
+	
+	#2 format()
+		-Creates a formatted string using a format string and arguments
+
+	Example:
+		String s = String.format("Hello, %s! You are %d years old.", "Alice", 30);
+		// "Hello, Alice! You are 30 years old."
+
+	#3 join()
+		-Concatenates multiple strings with a specified delimiter
+		-Introduced in Java 8
+
+	Example:
+
+		String s = String.join(", ", "apple", "banana", "cherry");  // "apple, banana, cherry"
+
+	#4 copyValueOf()
+
+		-Creates a string from all or part of a character array
+
+	Example:
+
+		char[] chars = {'H', 'e', 'l', 'l', 'o'};
+		String s1 = String.copyValueOf(chars);  // "Hello"
+  		String s2 = String.copyValueOf(chars, 1, 3);  // "ell"
+	
+	#5 String.strip(), String.stripLeading(), String.stripTrailing() (Java 11+): Remove whitespace from strings.
+
+	#6 String.repeat() (Java 11+): Repeats a string a specified number of times.
+
+	#7 String.lines() (Java 11+): Splits a string into a stream of lines.
+
+	#8 intern() is a method of the String class that adds a string to the string pool (also known as the string intern pool) or 	returns a reference to an existing string in the pool.
+
+
+
+=====================================================================================================================================
+						AutoBoxing and AutoUnBoxing
+=====================================================================================================================================
+
+Before version 1.4 we couldn't use wrapper class in place of primitives and primitives in place of wrapper class.
+Every thing should have been done by the programmer himself.
+
+From version 1.5 we can use primitives in place of wrapper and wrapper in place of primitives. The conversion will be done by the compiler automatically. This process is called "AutoBoxing" and "AutoUnBoxing".
+
+Boolean b = Boolean.valueOf(true);
+
+	//we are supposed to use primitives here 
+	if(b){
+		sysout("hello world!");
+	}
+
+
+
+	ArraryList a = new ArrayList();
+
+	a.add(10); //here the ArrayList expects the data to be object type. But we are providing int (primitive type); 
+		
+
+
+	Autoboxing
+=========================
+
+Automatic conversion of primitive type to Wrapper object type by the compiler.
+
+	Integer i = 10; // Integer i = new Integer.valueOf(10); 
+
+	if we give primitive type to a wrapper type object the compiler wraps it and makes it into an object and gives it to the 	wrapper class.
+
+
+
+	AutoUnboxing
+========================
+Automatic conversion of Wrapper class object to primitive type by the compiler.
+
+	Integer i = new  Integer(12);
+
+	int i2 = i;  //converting Integer object to primitive int type using xxxValue(); int i2 = i.intValue();
+
+
+
+
+
+staic Integer i; //i = null;
+
+public static void main(String args[]){
+	int i2 = i; //i2 = i.intValue();       ****but i is null so it will result is  NullPointerException;
+}
+
+=====================================================================================================================================
+					valueOf() using buffer object 
+=====================================================================================================================================
+
+
+valueOf() uses a buffer object which has predefined values from -128 to +127.                         
+
+if the wrapper objects are within this range the reference point to this buffer object. 
+
+	
+
+
+	Integer i1 = 10;
+
+	Integer i2 = 10;
+
+	so ,
+	System.out.println(i1==i2); // will return true because the references are pointing to the same object in the buffer of objects.
+
+	Here i1 and i2 will point to the same object in the buffer of object.
+
+	This utilizes the memory uses. // (and promotes reusability?)
+
+	Integer a = 1000;
+	Integer b = 1000;
+
+	System.out.println(a==b); // will return false because buffer of objects does not hold the value 1000. 
+
+				 //A new object will be created for each with the new keyword like :Integer a = new Integer.valueOf(1000); Integer b = new Integer.valueOf(1000);
+
+	when new keyword is used the momory will come from Heap, not from the buffer area.
+	
+
+
+	Integer i = new Integer(10); // memory allocated from heap are 
+	Integer i2 = 10; // from buffer area 
+
+
+				Compiler uses "valueOf()" for Autoboxing
+
+							^
+							|
+	At the time of loading the .class file JVM will use buffer with the objects which are already predefined
+
+
+
+           -------------------------------------------------------------------------------------------                                                              
+          |  -128 |   |   |  | 10(i1, i2) |   |    |    |    |     |    |     |    |     |    | +127  |
+           -------------------------------------------------------------------------------------------   
+									
+				              -128 to +127 
+
+	Note:
+
+	#1 To implement autoboxing concept in wrapper class buffer of object will be created at the time of class loading.
+	#2 During autoboxing, if am object has to created, first JVM checks whether the object is already available inside the buffer or not
+	#3 If available, JVM will reuse the buffer object instead of creating a new object.
+	#4 If the object is not available inside the buffer JVM will create a new object inside the heap area, this approach improves the performance and memory utilization .
+
+
+But this buffer concept is only applicable for a few cases.
+
+1. Byte => -128 to +127 
+2. Short => -128 to +127
+3. Integer => -128 to +127
+4. Long -128 to =>  +127
+5. Character => 0 to 127
+6. Boolean => true, false 
+
+
+
+In remaining new object will be created.
+
+  
+=====================================================================================================================================
+						var args method
+=====================================================================================================================================
+
+
+This stands for variable argument method. 
+
+In java if we have variable number of arguments, then new method had to be written. This was the case until JDK 1.4 version.\
+
+But from JDK 1.5 version, we can write a single method which can handle variable number of argument. But these arguments have to be of the same type.
+
+ 	Example:
+		
+		methodName(datatype... variableName){} //  (...)this is called ellipse
+
+
+
+	class Demo{
+		void static demoMethod(int... x){
+			System.out.println("this is a var-arg method.");
+		}
+
+
+		public static void main(String [] args){
+			Demo d = new Demo();
+
+			d.demoMethod(1);
+			d.demoMethod(1, 4, 3); // new int[]{1, 4, 3}
+			d.demoMethod(36,2,9,3,2); // new int[]{36, 2, 9, 3, 2}
+		}
+	}
+
+
+When using ellipse (...) the JVM internally uses Array Representation to hold the values of x.
+
+
+
+
+=====================================================================================================================================
+						How new keyword works
+=====================================================================================================================================
+
+
+Demo d = new Demo(23);
+
+Take the input of the class name for which object has to be created at the runtime.
+
+new creates a memory in Heap area. 
+
+JVM will search for the .class file in the working directory. 
+
+If found it will load the .class file inside the method area.
+
+During the loading of .class file: 
+					-static variables will get memory allocated with default value.
+					-static block will get executed.
+
+
+
+
+In the Heap area required object memory for instance variables are given and JVM sets the default value for them.
+
+Then JVM will, 
+
+					-Execute the instance blocks if available.
+					-Call the constructor to set the meaningful values to the instance variables.
+
+JVM will give the address of the object to the hashing algorithm and it will generate the hashCode for the object and the hashCode will be returned to the programmer as a reference.
+					
+					
+
+=====================================================================================================================================
+
+=====================================================================================================================================
+
+Q: What are called Standalone Application?
+
+>>>> The application that are running on single machine are called standalone applications.
+
+	Example: Calculator, Notepad, Ms-word (One user can use these applications at a time.)
+
+
+
+
+Q: What are Web Applications?
+
+>>>> The applications which provide service over the web are called as "Web Applications".
+
+
+Q: Web applications use what technologies?
+
+>>>> Web applications use technologies like:
+			
+		1. JDBC
+		2. Servlet
+		3. JSP/Thymeleaf 
+
+
+			
+JDBC : 		For a Java Application(Normal Java class or Servlet) if we want to communicate with database, then we need to go for 
+		JDBC (Java Database Connectivity).
+
+		Example : To get mails information from a database.
+
+
+Servlet :	Whenever some processing logic is required then we need to go for Servlet. Servlet is meant for Processing logic.
+		
+		Example : Communicate with data.
+			  Verify user
+			  Process user data  		
+
+
+JSP : 		Whenever presentation logic is required to display something to the end user then we need to go for JSP. JSP stands 		for  View Component.
+
+		Example : Display login page
+		  	  Display inbox page 
+
+
+=====================================================================================================================================
+					       Steps to communicate with a Database
+=====================================================================================================================================
+
+#1 Load and Register the Driver
+
+	We need to load and register the driver as per the DB requirement.
+	As per the DB specification, we need to set the JRE environment with the DB specification.
+	
+	Any class of DB vendor we call it as Driverclass, if it has implemented a interface, we call it as "Driver".
+
+	The implementation class of MySQL jar id called "Driver".
+
+	Any call that is called a Driver must implement the Driver interface provided by the Sum Micro Systems JDBC API.
+
+
+	=========================================================================================
+
+	Class.forName("com.mysql.cj.jdbc.Driver"); 
+
+
+	With this, the Driver class is loaded, so in JRE JDBC  environment for MySQL is setup.
+
+	When the Driver is loaded, 
+
+					class Driver{
+						static{
+							Driver driver = new Driver();
+							DriverManager.registerDriver(driver);
+						}
+					}
+
+#2 Establish the Connection
+
+				try{
+					url = "jdbc:mysql://localhost:3036/databasename";
+					username = "username";
+					pass = "password";
+
+					Connection connection = DeiverManager.getConnection(url, username, pass);
+
+				} 
+
+
+========================================================
+Connection connection = DeiverManager.getConnection(url, username, pass);
+
+Q : The above line would create connection object, but Connection is an interface, can we create an object of an interface?
+
+>>>> NO, for an interface instantiation is not possible. 
+     In this line, an object to a class which implements the interface called Connection is created and we hold the reference 
+     of the object with the interface name.
+     This is done to promote loose coupling. 
+
+#3 Create Statement Object and Execute the Query 
+
+//	inside try catch block
+
+	String query = "select * from tablename";
+
+	Statement statement = connection.createStatement();
+
+	ResultSet resultSet = statement.executeQuery(query);
+
+
+======================================================================
+
+
+#4 Process the ResultSet 
+
+
+			while(resultSet.next()){
+				int id = resultSet.getInt("id")/(1); //columname or number
+
+				String name = resultSet.getString("name")/(2);
+
+				System.out.println(id + "\t" + name);
+			}
+
+#5 Handle the SQLException if it gets generated
+
+			catch(Exception e){
+
+				e.printStackTrace();
+
+			}
+
+#6 Close the Connection
+
+			resultSet.close();
+			statement.close();
+			connection.close();
+
+
+
+
+
+
+=====================================================================================================================================
+						What is autoloading in JDBC?
+=====================================================================================================================================
+
+Autoloading is the process of loading and registering the driver automatically, based on the URL supplied by the user. 
+
+This is available from JDBC 4.X version onwards.
+
+Behind the scenes: 
+ 			 
+			1. Check the URL
+			2. Based on the URL supplied, go to classpath environmental variable
+			3. Open relevant JAR
+			4. Go to META-INF/services folder
+			5. Open java.sql.Driver file
+			6. Read the file and load the class supplied in the file.
+
+
+=====================================================================================================================================
+							SQL commands
+=====================================================================================================================================
+
+
+According to DBA specification, all SQL commands are categorised into following types, 
+
+	1. DDL(Data Definition Language)  => create alter, drop
+	2. DML(Data Manipulation Language) => insert, update, delete
+	3. DQL(Data Query Language) => select
+	4. DCL(Data Control Language) => alter password, grant access
+	5. DA Command(Database Administrator Command) => start audit, stop audit
+	6. TCL(Transaction Control Language) => commit, rollback, savepoint  
+
+
+
+In java perspective there are two types of sql queries" 
+
+	1. Select operation (DQL)
+	
+	2. Non-select operation(DML, DDL)
+
+Through statement object we need to execute the query, and to execute the query we need to make a call to the method,
+
+		
+		1. executeQuery() :
+
+					This method is only used if we perform SELECT operation. 
+					This returns a group of object which are represented as ResultSet object.
+
+
+					ResultSet resultSet = statement.executeQuery(query);
+
+					Throws SQLException. 
+
+		2. executeUpdate() : 
+					This method is used for Non-Select Operations like insert, update, delete.
+					This operations does not return a group of records, instead it returns a numeric
+					value representing how many records are affected by the operation. 
+
+					int rowsAffected = statement.executeUpdate(query);
+
+					Throws SQLException. 
+
+		3. execute():
+					This method can be used for both Select and Non-Select quires.
+				
+					If we don't know the query available at the beginning and quires are given dynamically then 					we should use this method.  
+
+					public Boolean execute(String sql) throws SQLException
+
+
+					Example:  boolean value = statement.execute(dynamicQuery);
+
+						if(value == true){
+							//select query
+							ResultSet resultSet = statement.executeQuery(query);
+						} else{
+							//non-select query
+							int rowsAffected = statement.executeUpdate(query);
+						}
+
+
+
+formatting string for query.
+
+Scanner sc = new Scanner(System.in);
+
+String name = sc.next();
+Integer age = sc.nectInt();
+String address = sc.next();
+
+String insertQuery = String.format("insert into students(`name`,`age`,`address`) values('%s', '%d', '%s')", name, age, address);
+
+
+					
+					================================================
+
+
+	While writing JDBC code, the following steps are common.
+
+			#1 Establishing the connection
+
+			#2 Closing the connection
+
+			#3 Handling the Exceptions
+
+
+	And what would vary inside the  code is :
+			
+			#1 Query will be different
+				- If it is select process the ResultSet object.
+				- If it is non-select process the integer value.
+
+		
+
+
+
+
+
+	We can write the common methods inside another file.
+
+	public class JDBCUtil {
+
+		co //making the constructor private so no object can be created. 
+
+				    // we can use the methods of this class by their class name as they are static.
+
+
+		# step 1 : Load and Register the Driver
+
+		static{   // The static block executes only once, when the class is first loaded.
+			try{
+			 	Class.forName("com.mysql.cj.jdbc.Driver");
+	
+			} catch(ClassNotFoundException ce){
+				
+				ce.printStackTrace();
+			}
+		}
+
+			# step 2 : Establishing a connection
+
+		import java.sql.Connection;
+		import java.sql.DriverManager;
+		import java.sql.SQLException;
+
+		public static Connection getConnection(){  //static because it's a utility method
+
+			String url = "";
+			String user = "";
+			String pass = "";
+
+			Connection connection = DriverManager.getConnection(url, user, pass);
+			System.out.println("Connection object created...");
+
+			return connection;
+		}
+
+
+			# step  :  
+
+		public static void close(Resultset resultSet, Statement statement, Connection connection){  // 	utility method
+			if(connection != null){
+				connection.close();
+			} 
+
+			if(statement != null){
+				statement.close();
+			}
+
+			if(resultSet != null){
+				resultSet.close();
+			}
+		}
+
+	}
+
+
+///// main method 
+
+
+
+
+	public static void main(String args[]){
+		Connection connection = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+
+
+		try{
+			connection = JDBCUtil.getConnection();
+
+
+			if(connection != null ){
+				statement = connection.createStatement();
+			}
+
+ 			if(statement != null){
+				resultSet = statement.executeQuery("SELECT * FROM students");
+			}
+
+			if(resultSet != null){
+				while(resultSet.next()){
+					int id = resultSet.getInt(1);
+					String name = resultSet.getStrin(2);
+
+					System.out.printf("%d%-15s", id, name );
+				}
+			}
+	
+
+		} catch(SQLException se){
+			se.printStackTrace();
+		} catch(Exception e){
+			e.printStackTrace();
+		} finally{
+			try{
+				JDBCUtil.close(resultSet, statement, connection);
+				System.out.println("Closing the resources...");
+			} catch(Exception e){
+				e.printStackTrace();
+			}
+		}
+	}
+
+
+=====================================================================================================================================
+							Use of Properties						
+=====================================================================================================================================
+
+Properties : 
+
+		It represents data in key, value pair.
+
+		It represents an object of the type java.util.Properties.
+
+		Properties object holds the data which will be frequently changing in our application. 
+
+
+Using Properties file in java. 
+
+		#1 create file input stream
+
+
+			FileInputStram fis = new FileInputStream("properties file location");
+
+			Properties properties = new Properties;
+
+			properties.load(fis);
+
+			url = properties.getKey("url");
+
+			user = properties.getKey("user");
+	
+			pass = properties.getKey("pass");
+
+
+
+After execution if we make changes to the properties file we do not need to recompile the code. Because the code is still under execution. 
+
+
+=====================================================================================================================================
+						Life cycle of Query Execution
+=====================================================================================================================================
+					 -----------			 ------------
+  				 /=====>|Compilation|==============>	|Tokenization|
+				/	 -----------	     | 		 ------------  		 
+			       /			     |		 -------
+			      /				     |=====> 	|Parsing|
+			     /				     |	         -------
+			    /				     |		 ------------------
+			   /				     |=====>	|Query Optimization|
+         ---------------  /              				 ------------------
+	|Database Engine|           
+	 ---------------  \		  ---------
+			   \============>|Execution|
+			   		  ---------
+
+
+
+
+
+
+Java Application > (SQL Query) >Database Engine > Compilation > Tokenization > (Stream of tokens) > Parsing > (Query Tree) > QueryOptimization >(Optimized Query Tree)> Compilation > Execution > Database Engine  > (ResultSet) > Java Application
+
+
+
+=====================================================================================================================================
+						Using Prepared Statement 
+=====================================================================================================================================
+
+		Using Statement object same query has to be complied multiple times for multiple client request. 
+		this causes performance issue. 
+
+		To resolve this issue we need to use "PreparedStatement(I)". 
+
+
+		Using PreparedStatement the query will remain same and will be executed only once. Only the value will change for the 		query.
+
+				-Query will be compiled only once, but we will execute the query multiple times with different
+				 value.
+			
+				-Through this performance is increased. 
+
+
+		public static PreparedStatement prepareStatement(String query) throws SQLException
+
+		PreparedStatement ps = connection.prepareStatement(query);
+
+
+		At this line query will be sent to the database engine and the DB will compile and store it inside the database.
+		The pre-compiled query will be sent to the java application in the form of PreparedStatement object.
+		
+
+		PreparedStatement is also called the "preComppliedQuery".
+
+
+	//Setting the values
+
+		ps.setInt()
+		ps.setString()
+
+
+
+	Advantages :
+  =====================
+
+			#1 performance will be very high since query will be complied only once.  
+
+			#2 Since we don't send the query multiple times between java application and database the 
+				traffic will reduce.
+
+			#3 No need to supply the input at the beginning. We can send the query dynamically. 
+
+			#4 Best for inserting data values.
+
+			#5 Best for insertion of BLOB's and CLOB's (image and pdf files).
+
+			#6 Prevents SQLInjection attack. 
+
+
+	Limitations : 
+    ====================
+
+			#1 One statement object can be used to execute multiple quires. But change in input is not possible.
+
+			#2 One prepared statement can execute only one query. But this query can be executed multiple  times with 				different inputs.  We have to write different prepared statement for different quires. 
+
+
+
+
+=====================================================================================================================================
+							Static vs Dynamic query 
+=====================================================================================================================================
+
+		Static Query : 
+
+				SQL Query without positional parameter (?) is called static query. Statement object is used for 				static quires. 
+
+
+				Example: SELECT * FROM student WHERE name = "silvia";
+
+
+
+		Dynamic Query : 
+
+				SQL Query with positional parameter (?) is called dynamic query. Prepared statement is used for both 				static and dynamic quires. 
+
+				Example: SELECT * FROM students WHERE name = ?;
+
+
+
+
+=====================================================================================================================================
+						Handling Data Values For Operations
+=====================================================================================================================================
+
+
+Sometimes as per the programming requirement we have to insert and retrieve data like : 
+
+		-> DOB, DOJ, DOM, DOP, wrt database. 
+
+		-> It is not recommended to store data in the form of String, because comparison will become difficult.
+
+
+In Java we have two Date classes: 
+
+		-> java.util.Date
+
+		-> java.sql.Date  (Child class of java.util.Date)
+
+
+
+java.sql.Data is specially designed for handling Date values wrt class. 
+
+Other than database operations, if we want to  represent Date in our java program then we should go  for java.util.Date class.
+
+java.util.Date can represent both Date and Time where java.sql.Date represents only Date, no Time.
+		
+
+
+
+
+	Note: 
+		In SQL Package Time class is available for displaying time and TimeStamp is available to show both date and time.
+
+
+
+                  Date & Time 				    Only Time
+		 ----------------        extends         ---------------	
+		| java.util.Date | <================= 	| java.sql.Date | 
+		 ----------------			 ---------------
+
+
+
+
+			Date date = new Date();
+			System.out.println(date);
+		
+			java.sql.Date sdate = new java.sql.Date(date.getTime());
+			System.out.println(sdate);
+
+
+
+
+	User Input(String) >> java.util.Date >> java.sql.Date
+
+
+	To convert date from String to java.util.Date : 
+
+		
+	Scanner sc = new Scanner(System.in);
+	String sDate = sc.next();
+	
+	SimpleDateFormat sdf = new SimpleDateFormat("dd-MM"-yyyy");/date format has to be whichever format date is entered by user
+
+	
+	java.util.Date uDate = sdf.parse(sDate);  // converting String to utility date. 
+
+	long value = uDate.getTime();  
+
+	java.sql.Date sqlDate = new java.sql.Date(value); // Utility Date to SQL Date
+
+
+
+
+	By using,  
+	
+		java.sql.Date.valueOf(String inp) and  passing yyyy-MM-dd fromat in inp we can directly get the sql format date.
+
+
+=====================================================================================================================================
+						Retrieval of Date Object from Database
+=====================================================================================================================================
+
+
+
+
+
+
+DB.Date ===> resultSet(sql.Date) ===>Intermediator(SimpleDateFormat.format(pattern)) ===> String Format ===> End user date format
+
+
+=====================================================================================================================================
+							Delegation 
+=====================================================================================================================================
+
+When an object needs to perform any task, instead of doing the task directly it asks another object to handle the task completely or partially. 
+
+An act of one object forwarding an operation to another object, to be performed on behalf of the first object.
+
+The search() method in the Inventory asks the GuitarSpec to tell it if two specs are equal or not. Instead of comparing two GuitarSpec object directly within the search() method itself, it delegates the comparison to GuitarSpec
+
+
+
+
+=====================================================================================================================================
+							Loosely coupled 
+=====================================================================================================================================
+
+We should create each object for doing one specific job and only that job.
+
+This is called loosely coupled. This type of applications are easy to change as each object has one specific job, so changing one won't affect others. So adding new features or functionality is easier as it does not affect other parts of the application.
+
+
+
+
+
+
