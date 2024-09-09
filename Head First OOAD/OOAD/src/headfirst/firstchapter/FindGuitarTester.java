@@ -6,7 +6,7 @@ import java.util.List;
 public class FindGuitarTester {
 	
 	public static void initializeInentory(Inventory inv) {
-		inv.addGuiter("V95396", 1499.67, Builder.FENDER, "Stratocaster", Type.ELECTRIC, Wood.ALDER, Wood.ALDER, 6);
+		inv.addGuiter("V95396", 1499.67, Builder.FENDER, "Stratocaster", Type.ELECTRIC, Wood.ALDER, Wood.ALDER, 12);
 		inv.addGuiter("V95393", 1799.67, Builder.FENDER, "Stratocaster", Type.ELECTRIC, Wood.ALDER, Wood.ALDER, 6);
 	}
 
@@ -27,7 +27,7 @@ public class FindGuitarTester {
 			
 			for(Iterator i = matchingGuiters.iterator(); i.hasNext();) {
 				Guiter guiter = (Guiter) i.next();
-				System.out.println("We have a : " +  guiter.getSpec().getBuilder() + "\t" + guiter.getSpec().getModel() + "\t" 
+				System.out.println("We have a : " +  guiter.getSpec().getBuilder() + "\t" + guiter.getSpec().getModel() + "\t"+guiter.getSpec().getNumOfString() + " strings" + "\t" 
 					
 					+ guiter.getSpec().getTopWood() + "\t" + guiter.getSpec().getBackWood() + "\t" + guiter.getPrice() 
 					);

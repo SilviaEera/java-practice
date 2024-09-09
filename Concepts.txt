@@ -1280,6 +1280,99 @@ We should create each object for doing one specific job and only that job.
 This is called loosely coupled. This type of applications are easy to change as each object has one specific job, so changing one won't affect others. So adding new features or functionality is easier as it does not affect other parts of the application.
 
 
+=====================================================================================================================================
+						What is needed inside an application 
+=====================================================================================================================================
+
+Functionality => 
+		
+		Application needs to work the way the customer wants. Well designed application does not matter if the application 		does not work the way the customer wanted. 
+
+
+Design Pattern => 
+
+		It's all about reusing the solution of common problems that someone has already faced and found a solution to it. 
+
+Encapsulation => 
+
+		It is done to keep parts of our code that will change separate from other parts of our code that will not change 		often. It helps with organizing code and later to making changes to the code we don't need to change every part of 		our code.
+
+
+Flexibility => 
+
+		Our application should be flexible so to make changes to our application we don't need to do everything from 			scratch and the application will not break.
+
+
+ 
+=====================================================================================================================================
+							Head First OOAD : Chapter Two 
+=====================================================================================================================================
+
+								USE CASE
+
+
+
+
+Use Case :
+
+		A use case is a technique for capturing the potential customer requirement of a new system or software change. 
+		Each use case provides one or more scenarios that convey how that system should interact with the end user or
+		another system to achieve specific goal.
+
+		One use case can only focus on one particular goal for an user. If the user need to accomplish more than one 
+		thing in a system then they'll need more than one use case. 
+
+		So applications are to have a use for every goal it accomplishes. 
+
+		A use case is what a system does to accomplish a goal. Use case should be simple and use language that everyone will 
+		understand. 
+
+
+
+
+
+	# A use case must have a clear goal to help the customer achieve whet they want. 
+
+	# Every use case must have a starting and ending point. Something that will start the process and condition that indicates 
+		that the process is complete. 
+
+	#3 Every use case has an external initiator that starts the process. By external initiator we mean someone who is outside the 
+		system. 
+
+
+
+
+	Q => What are use case diagrams? 
+
+		=> Use case diagrams are a way to represent use cases visually. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
