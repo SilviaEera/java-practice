@@ -23,14 +23,14 @@ public class Remote {
 	
 //	adding timer so door will close automatically after a time 
 	
-	final Timer timer = new Timer();
-	
-	timer.schedule(new TimerTask(){
-		public void run() {
-			door.close();
-			timer.cancel();
-		}
-	}, 5000);
+//	final Timer timer = new Timer();
+//	
+//	timer.schedule(new TimerTask(){
+//		public void run() {
+//			door.close();
+//			timer.cancel();
+//		}
+//	}, 5000);
 	
 	}
 }

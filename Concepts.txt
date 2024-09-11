@@ -1319,6 +1319,8 @@ Use Case :
 		Each use case provides one or more scenarios that convey how that system should interact with the end user or
 		another system to achieve specific goal.
 
+		Use cases are like stories of how a program can be used.
+
 		One use case can only focus on one particular goal for an user. If the user need to accomplish more than one 
 		thing in a system then they'll need more than one use case. 
 
@@ -1327,7 +1329,7 @@ Use Case :
 		A use case is what a system does to accomplish a goal. Use case should be simple and use language that everyone will 
 		understand. 
 
-
+		
 
 
 
@@ -1352,16 +1354,28 @@ Use Case :
 
 
 
+Requirement: 
+
+		Requirements are what a customer needs the software to do.
+
+		You have to make a list of requirement from the use cases described.
 
 
 
 
+=====================================================================================================================================
+							Head First : Chapter Three
+
+							  Changing Requirements 
+=====================================================================================================================================
+							   
 
 
+	Alternate paths are a different way of reaching the same goal/doing what the application is meant to do.
 
+		A complete path from start to finish is called a SCENARIO. 
 
-
-
+			One app can have multiple scenarios, but they all share the same goal.
 
 
 
