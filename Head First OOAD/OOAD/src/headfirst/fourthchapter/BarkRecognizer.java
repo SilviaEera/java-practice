@@ -23,9 +23,16 @@ public class BarkRecognizer {
 			
 			if(allowedBark.equals(bark)) {
 				door.open();
+				
+				
+//				if a mathing bark is found return from the method/get out of the method
 				return;
 			} 
 		}
+		
+//		if not mathch is found after iterating the whole list, get out of the loop and return not allowed
+		
+		
 		System.out.println("This dog is not allowed..");
 	}
 

@@ -1377,6 +1377,66 @@ Requirement:
 
 			One app can have multiple scenarios, but they all share the same goal.
 
+ 
+
+
+
+==========================================================================================================================================================================================================================================================================
+
+
+
+1. Association (uses-a):
+   Think of this like a driver and a car. They're related, but neither owns the other.
+
+```java
+class Student {
+    public void attendClass(Course course) {
+        // Student attends a course
+    }
+}
+
+class Course {
+    public void enroll(Student student) {
+        // Course has students enrolled
+    }
+}
+```
+
+In this case, students attend courses and courses have students, but neither owns the other. They're just associated.
+
+
+
+
+
+
+
+2. Aggregation (has-a):
+   This is like a parking lot and cars. The parking lot has cars, but the cars can exist without the parking lot.
+
+```java
+class Department {
+    private List<Professor> professors = new ArrayList<>();
+    
+    public void hireProfessor(Professor professor) {
+        professors.add(professor);
+    }
+    
+    public void transferProfessor(Professor professor, Department newDepartment) {
+        professors.remove(professor);
+        newDepartment.hireProfessor(professor);
+    }
+}
+
+class Professor {
+    private String name;
+    
+    public Professor(String name) {
+        this.name = name;
+    }
+}
+```
+
+Here, a Department has Professors, but Professors can exist without a specific Department. They can be transferred between departments.
 
 
 
@@ -1386,7 +1446,166 @@ Requirement:
 
 
 
+3. Composition (part-of):
+   This is like a car and its engine. The engine is a part of the car and cannot exist without it.
 
+```java
+class University {
+    private List<Building> buildings;
+    
+    public University() {
+        buildings = new ArrayList<>();
+        buildings.add(new Building("Library"));
+        buildings.add(new Building("Science Lab"));
+    }
+    
+    // When University is destroyed, all its buildings are too
+}
+
+class Building {
+    private String name;
+    
+    public Building(String name) {
+        this.name = name;
+    }
+    // Building only exists as part of a University
+}
+```
+
+In this case, Buildings are part of the University. They're created when the University is created and cease to exist if the University is destroyed.
+
+Key differences:
+- Association: Two classes are related but independent (Student and Course)
+- Aggregation: One class has objects of another class, but they can exist independently (Department has Professors)
+- Composition: One class is made up of another class, and the composed class cannot exist independently (University is composed of Buildings)
+
+Does this help clarify the concepts? Would you like me to elaborate on any specific part?
+
+
+=====================================================================================================================================
+						Blob And Clob
+=====================================================================================================================================
+BLOB
+================
+FILE SAVING
+-----------
+JDBCUtil.getJDBCUtil();
+			
+			connection = JDBCUtil.getConnection();
+			
+			String insertQ = "INSERT INTO person(`person_name`, `img`) VALUES(?, ?)";
+			if(connection!=null) {
+				pst = connection.prepareStatement(insertQ);
+			}
+			
+			if(pst!=null) {
+				sc = new Scanner(System.in);
+				
+				if(sc!=null) {
+					System.out.print("Please enter the name : ");
+					name = sc.next();
+					
+					System.out.println("Enter the image location : ");
+					img = sc.next();
+				}
+				
+				pst.setString(1, name);
+				pst.setBinaryStream(2, new FileInputStream(new File(img)));
+				
+				int rowsAffected = pst.executeUpdate();
+				
+				System.out.println("Rows affected : " + rowsAffected);
+			}
+
+
+FILE RETRIVING
+-------------
+id = res.getInt("id");
+						
+						name = res.getString("person_name");
+						
+						InputStream is = res.getBinaryStream("img");
+						
+					File file = new File("C:\\Users\\Eera\\Desktop\\java\\BlobClob\\Blob\\asstes", name+".mp4");
+						
+						FileOutputStream fos = new FileOutputStream(file);
+						System.out.println("ID\tName\tImage Location");
+						System.out.println(id + "\t" + name + "\t" + file.getAbsolutePath());
+						
+						
+						IOUtils.copy(is, fos);
+						
+					//	efficient 
+						
+//						byte[] buffer = new byte[1024];
+//						
+//						
+//						while(is.read(buffer)>0) {
+//							fos.write(buffer);
+//						}
+						
+					//	not efficient cause reading 1 byte at a time and writing it.
+						
+//						int i = is.read();
+//						
+//						while(i != -1) {
+//							fos.write(i);
+//							i = is.read();
+//						}
+						
+						fos.close();
+						is.close();
+						
+
+
+ 
+
+CLOB 
+================
+FLE SAVING 
+----------
+try {
+			conn = JDBCUtils.getConnection();
+			String insertQ = "INSERT INTO files(`name`, `file`) values(?, ?);";
+			if(conn!=null) {
+				pst = conn.prepareStatement(insertQ);
+			}
+			
+			if(pst!=null) {
+				sc = new Scanner(System.in);
+				if(sc!=null) {
+					System.out.println("Enter file name :: ");
+					name = sc.next();
+					
+					System.out.println("Enter file location :: ");
+					file = sc.next();
+					
+					pst.setString(1, name);
+					pst.setCharacterStream(2, new FileReader(new File(file)));;
+					
+					int rowsAffected = pst.executeUpdate();
+					
+					
+					
+				}
+			}
+		} catch(Exception e) {
+			
+		}
+
+FILE RETRIVING 
+--------------
+
+
+
+	Reader reader = res.getCharacterStream(3);
+	File file = new File("C:\\Users\\Eera\\Desktop\\java\\BlobClob\\CLOB\\assets",name+".txt");
+					
+	FileWriter writer = new FileWriter(file);
+					
+	IOUtils.copy(reader, writer);
+	System.out.println(id + "\t" +name + "\t" +file.getAbsolutePath());
+	writer.close();
 
 
 
