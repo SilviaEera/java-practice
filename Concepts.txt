@@ -1609,4 +1609,19 @@ FILE RETRIVING
 
 
 
+=====================================================================================================================================
+						Need of DTO in projects
+=====================================================================================================================================
 
+
+DTO ---> Data Transfer Object
+
+
+This object  is used for transferring data from one layer to another layer in realtime applications.
+
+
+
+****ResultSet objects can not be sent over the network because ResultSet objects are not serializable. 
+
+
+****Exposing the set of services and hiding the implementation details is called abstraction. 
