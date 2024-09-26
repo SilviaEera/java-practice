@@ -52,7 +52,31 @@ public class StudentDAOImpl implements IStudentDAO {
 
 	@Override
 	public String updateStudent(Integer sId, String sName, Integer sAge, String sAddress) {
-		// TODO Auto-generated method stub
+		try {
+			c = Util.getConnection();
+			String updateQ = "update student set `sname` = ?, `sAge` = ?, `sAddress` = ?  where `id` = ?";
+			if(c!=null) {
+				p = c.prepareStatement(updateQ);
+				
+			}
+			
+			if(p!=null) {
+			
+				
+				p.setInt(4, sId);
+				p.setString(1, sName);
+				p.setInt(2, sAge);
+				p.setString(3, sAddress);	
+			}
+			
+			Integer rowsAffected = p.executeUpdate();
+			
+			if(rowsAffected == 1) {
+				return "success";
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
 		return null;
 	}
 

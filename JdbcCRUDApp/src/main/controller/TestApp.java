@@ -4,17 +4,17 @@ import main.service.IStudentService;
 import main.servicefactory.StudentServiceFactory;
 
 public class TestApp {
-
 	public static void main(String[] args) {
 		
 		IStudentService studentService = StudentServiceFactory.getStudentService();
 		
-		String msg = studentService.addStudent("Test", 23, "Test Lane, Barisal");
+		String msg = studentService.updateStudent(4, "Tasnuva Islam", 1, "Frankfurt, Germany");
+		
 		
 		if(msg.equalsIgnoreCase("success")) {
-			System.out.println("Record inserted successfully");
+			System.out.println("Record update successfully");
 		} else {
-			System.out.println("Record insertion faild.");
+			System.out.println("Record update failed.");
 		}
 	}
 
