@@ -9,7 +9,7 @@ public class TestApp {
 		
 		IStudentService studentService = StudentServiceFactory.getStudentService();
 		
-		String msg = studentService.addStudent("Silvia", 23, "Kaunia 1st Lane, Barisal");
+		String msg = studentService.addStudent("Test", 23, "Test Lane, Barisal");
 		
 		if(msg.equalsIgnoreCase("success")) {
 			System.out.println("Record inserted successfully");
