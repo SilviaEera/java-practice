@@ -21,9 +21,10 @@ public class StudentServiceImpl implements IStudentService {
 	}
 
 	@Override
-	public Student searchStudent() {
-		// TODO Auto-generated method stub
-		return null;
+	public Student searchStudent(Integer sId) {
+		stdDAO = StudentDAOFactory.getStudentDAO();
+		
+		return stdDAO.searchStudent(sId);
 	}
 
 	@Override
@@ -37,9 +38,14 @@ public class StudentServiceImpl implements IStudentService {
 	}
 
 	@Override
-	public String deleteStudent() {
-		// TODO Auto-generated method stub
-		return null;
+	public String deleteStudent(Integer  sId) {
+		stdDAO = StudentDAOFactory.getStudentDAO();
+		
+		if(stdDAO!=null) {
+			return stdDAO.deleteStudent(sId);
+		} else {
+			return "failed";
+		}
 	}
 	
 }

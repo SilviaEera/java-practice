@@ -2,6 +2,7 @@ package main.presistence;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Scanner;
 import java.sql.PreparedStatement;
 
@@ -45,8 +46,40 @@ public class StudentDAOImpl implements IStudentDAO {
 	}
 
 	@Override
-	public Student searchStudent() {
-		// TODO Auto-generated method stub
+	public Student searchStudent(Integer sId) {
+		
+		try {
+			c = Util.getConnection();
+			String selectQ = "select id, sname, sAge, sAddress from student where `id` = ?";
+			if(c!=null) {
+				p = c.prepareStatement(selectQ);
+			}
+			
+			p.setInt(1, sId);
+			
+//			p.execute();
+			
+			r = p.executeQuery();
+			
+			
+			if(r!=null) {
+				Student ss = null;
+				if(r.next()) {
+					ss = new Student();
+					
+					ss.setsId(r.getInt(1));
+					ss.setsName(r.getString(2));
+					ss.setsAge(r.getInt(3));
+					ss.setsAddress(r.getString(4));
+					
+					return ss;
+				}
+			}
+			
+
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
 		return null;
 	}
 
@@ -81,8 +114,32 @@ public class StudentDAOImpl implements IStudentDAO {
 	}
 
 	@Override
-	public String deleteStudent() {
-		// TODO Auto-generated method stub
+	public String deleteStudent(Integer sId) {
+		try {
+			c = Util.getConnection();
+			
+			String deleteQ = "delete from student where id = ?";
+			if(c!=null) {
+				
+				p = c.prepareStatement(deleteQ);
+			}
+			
+			if(p!=null) {
+				p.setInt(1, sId);
+			}
+			
+			Integer rowsAffected = p.executeUpdate();
+			
+			if(rowsAffected == 1) {
+				return "success";
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
 		return null;
 	}
 

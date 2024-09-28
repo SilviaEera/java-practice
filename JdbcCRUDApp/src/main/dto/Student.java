@@ -15,10 +15,30 @@ public class Student implements Serializable{
 	private String sAddress;
 	
 	
-	public Student(Integer sId, String sName, Integer sAge, String sAddress) {
+//	public Student(Integer sId, String sName, Integer sAge, String sAddress) {
+//		this.sId = sId;
+//		this.sName = sName;
+//		this.sAge = sAge;
+//		this.sAddress = sAddress;
+//	}
+
+
+	public void setsId(Integer sId) {
 		this.sId = sId;
+	}
+
+
+	public void setsName(String sName) {
 		this.sName = sName;
+	}
+
+
+	public void setsAge(Integer sAge) {
 		this.sAge = sAge;
+	}
+
+
+	public void setsAddress(String sAddress) {
 		this.sAddress = sAddress;
 	}
 
