@@ -1,0 +1,70 @@
+class Solution {
+    public int getSum(int a, int b) {
+
+        int c;
+
+        while(b!=0){
+            c = (a&b);
+
+            a = a^b;
+
+            b = (c)<<1;
+        }
+
+        return a;
+        
+    }
+}
+
+
+
+In a = a ^ b,  using XOR operation we do the addition between two numbers without considering the carry. 
+
+In c = a & b,  using the AND operation we find where the carry is generated.
+
+In b = (c)<<1, we shift the value of carry 1 to the left as carry is used one position to the left of where it was generated. 
+
+
+
+
+
+
+
+
+for addition of 3 and 2 without +/- operator. 
+
+3 => 0011
+
+2 => 0010
+--------------
+    
+
+
+step 1: 
+
+c = 0011 & 0010 => 0010 
+
+a = 0011 ^ 0010 => 0001
+
+b = (0010)<<1   => 0100
+
+
+step 2: 
+c = 0001 & 0100 => 0000
+
+a = 0001 ^ 0100 => 0101
+ 
+b = 0000 << 1 => 0
+
+
+no more carry, so we have finished our addition. 
+
+result is a = 0101 => 5 (3+2=5) 
+
+
+
+
+
+
+
+
