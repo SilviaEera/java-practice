@@ -1,0 +1,71 @@
+class Solution {
+    public int coinChange(int[] coins, int amount) {
+
+        int []dp  = new int[amount +1];
+
+        Arrays.fill(dp, amount+1);
+
+        dp[0] = 0;
+
+        for(int i = 1; i<=amount; i++){
+            for(int coin : coins){
+                if(coin<=i){
+                    dp[i] = Math.min(dp[i], dp[i-coin]+1);
+                }
+            }
+        }
+
+        return dp[amount]>amount?-1 : dp[amount];
+        
+    }
+}
+
+
+
+we create an array of size amount+1 and fill the array with the value amount+1(maximum value). we set the value of the  zeroth index dp[0] to 0. 
+
+so it's like : 
+	
+	for amount 11; coins [1, 5, 6];
+
+		dp[0, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12]
+
+
+then for each iteration from i = 1 we check if each coin is less then or equal to the value of 1. (We are basically checking how many coins we need to create that value);
+
+for i = 1
+
+for coin 1 :  is 1 <= i/1; yes ===>  dp[1] = min(12, dp[1-1]+1);	=> (12, 1) 
+		
+		dp[1] =  1;
+
+
+for coin 5 : is 5 <= i/1; no
+for coin 6 : is 6 <= i/1; no
+
+
+for i = 2;
+
+coin 1 <= 2; dp[2] = min(12, dp[2-1]+1)  	=> (12, 2) => 2
+
+coin 5, 6 <=2 no
+
+for 11;
+
+coin 1 <= 11; dp[11] = min(12, dp[11-1]+1) 	=> (12, 3) => 3;
+
+coin 5 <= 11; dp[11] = min(3, dp[11-5]+1)	=> (3, 2) => 2;
+
+coin 6 11; dp[11] = min(2, dp[11-6]+1)		=> (3, 2) => 2;
+
+
+
+if dp[11] > 11 ? -1 : dp[11];
+
+dp[11] = 2 < 11; so answer will be 2; 
+
+we need two coins to make the amount 11.
+
+
+
+

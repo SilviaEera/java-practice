@@ -1625,3 +1625,83 @@ This object  is used for transferring data from one layer to another layer in re
 
 
 ****Exposing the set of services and hiding the implementation details is called abstraction. 
+
+
+
+
+
+=====================================================================================================================================
+						Types of Applications
+=====================================================================================================================================
+
+1. Standalone 
+	
+	# CUI (Commandline User Interface)
+	# GUI (Graphical User Interface)
+
+2. Enterprise 
+	
+	# Web Application
+	# Distributed Application
+
+
+
+
+=====================================================================================================================================
+					Difference Between Web and Distributed Application
+=====================================================================================================================================
+\\---------------\\
+ |Web Application|
+\\---------------\\
+
+		A web application is a server side application, it will be designed without distributing application logic on multiple number of JVM. 
+	
+		For building web applications we need technologies like, CGI, Servlet, JSP etc.
+
+
+
+
+\\-----------------------\\
+ |Distributed Application|
+\\-----------------------\\
+
+		It is a server side application, it will be designed by distributing application logic over multiple number of JVM. 
+
+		For building distributed application we need technologies like RMI(Remote Method Invocation), EJB's, Webservices etc.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
